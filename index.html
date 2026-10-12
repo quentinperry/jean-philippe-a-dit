@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jean-Philippe a dit — Recueil de citations</title>
+<title>Jean-Philippe a dit – Recueil de citations</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -44,17 +44,26 @@
 <nav id="chapters" class="chapters"></nav>
 <section id="spotlight" class="random-spotlight hidden"></section>
 <p id="count" class="results-count"></p>
+<section id="quiz" class="quiz">
+  <h2 class="quiz-title">Le quiz : Jean-Philippe a-t-il dit ça ?</h2>
+  <p class="quiz-intro">Une citation est authentique. Trois sont des impostures. Saurez-vous les démasquer ?</p>
+  <p id="quizScore" class="quiz-score hidden">Score : <span id="quizScoreValue">0</span> / <span id="quizPlayedValue">0</span></p>
+  <div id="quizGame"></div>
+  <button id="quizNext" class="btn-random hidden">Question suivante</button>
+</section>
+
 <main id="grid" class="grid"></main>
-<p id="empty" class="empty hidden">Aucune citation trouvée. « Vous me faites radoter » — essayez autre chose !</p>
+<p id="empty" class="empty hidden">Aucune citation trouvée. « Vous me faites radoter », essayez autre chose !</p>
 <footer class="footer">
   <blockquote class="footer-quote">
     « La Musique pour moi représente tout. C'est l'Art le plus complet. Qu'est-ce qu'il y a dans la
     Musique ? La Littérature, la Peinture, la Psychologie, les silences et les voix. Vous vous
     rendez compte ? »
-    <cite>— Georges Prêtre</cite>
+    <cite>Georges Prêtre</cite>
   </blockquote>
 </footer>
 <script src="data.js"></script>
+<script src="quiz.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
