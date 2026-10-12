@@ -230,9 +230,19 @@
     return a;
   }
 
+  var deck = [];
+
+  function nextQuizItem() {
+    if (!quizData.length) return null;
+    if (!deck.length) {
+      deck = shuffle(quizData);
+    }
+    return deck.pop();
+  }
+
   function renderQuiz() {
-    if (!quizData.length) return;
-    var item = quizData[Math.floor(Math.random() * quizData.length)];
+    var item = nextQuizItem();
+    if (!item) return;
     var options = shuffle([{ text: item.real, real: true }].concat(
       item.fakes.map(function (f) { return { text: f, real: false }; })
     ));
