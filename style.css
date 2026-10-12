@@ -34,4 +34,20 @@ body {
 .hidden { display: none; }
 .footer { max-width: 720px; margin: 4rem auto 0; padding: 0 1.5rem; text-align: center; }
 .footer-quote { font-style: italic; font-size: 1.05rem; color: #5a4a38; border-top: 1px solid #d9c7b2; padding-top: 2rem; }
-.footer-quote cite { display: block; margin-top: 0.6rem; font-style: normal; font-family: system-ui, sans-serif; font-size: 0.85rem; color: #a0714f; }
+.footer-quote cite { display: block; margin-top: 0.6rem; font-style: normal; font-family: system-ui, sans-serif; font-size: 0.85rem; color: #a0714f; }.btn-add { padding: 0.75rem 1.4rem; border-radius: 999px; border: 1px solid #b3702f; background: #fffdf9; color: #b3702f; font-weight: 600; font-family: system-ui, sans-serif; cursor: pointer; }
+.btn-add:hover { background: #f7e8d5; }
+.add-form { max-width: 720px; margin: 0 auto 1.5rem; padding: 1.5rem; background: #fffdf9; border: 1px solid #e8dcc8; border-radius: 14px; box-shadow: 0 4px 14px rgb(120 90 60 / 0.08); font-family: system-ui, sans-serif; }
+.add-form-title { font-size: 1.1rem; margin-bottom: 1rem; color: #35302a; }
+.add-form-fields { display: flex; flex-direction: column; gap: 0.9rem; }
+.add-form-label { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.8rem; color: #6b5d4f; }
+.add-form-input { padding: 0.55rem 0.8rem; border-radius: 8px; border: 1px solid #d9c7b2; background: #fff; font-size: 0.95rem; font-family: system-ui, sans-serif; }
+.add-form-input:focus { outline: 2px solid #c98a4b; }
+.add-form-row { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+.add-form-row .add-form-label { flex: 1; min-width: 160px; }
+.add-form-error { color: #b00020; font-size: 0.85rem; margin-top: 0.6rem; }
+.add-form-actions { display: flex; justify-content: flex-end; gap: 0.6rem; margin-top: 1.1rem; }
+.btn-ghost { padding: 0.75rem 1.4rem; border-radius: 999px; border: 1px solid #d9c7b2; background: transparent; color: #5a4a38; font-family: system-ui, sans-serif; cursor: pointer; }
+.btn-ghost:hover { background: #f3e9dc; }
+.quote-delete { position: absolute; top: 0.6rem; right: 0.6rem; width: 1.6rem; height: 1.6rem; border-radius: 50%; border: none; background: #f3e0cc; color: #a0714f; cursor: pointer; font-size: 0.8rem; line-height: 1; opacity: 0; transition: opacity .15s; }
+.quote-card:hover .quote-delete { opacity: 1; }
+.quote-delete:hover { background: #e3c2a0; color: #7a3f1f; }
