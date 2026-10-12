@@ -1,6 +1,6 @@
 # jean-philippe-a-dit
 
-Site de recueil des citations de **Jean-Philippe Sarcos**, chef de chœur — perles recueillies par plusieurs générations d'académiciens pendant les répétitions.
+Site de recueil des citations de **Jean-Philippe Sarcos**, chef de chœur – perles recueillies par plusieurs générations d'académiciens pendant les répétitions.
 
 ## Fonctionnalités
 
@@ -8,13 +8,15 @@ Site de recueil des citations de **Jean-Philippe Sarcos**, chef de chœur — pe
 - Recherche plein texte (citation, œuvre, année) avec surlignage
 - Filtres par chapitre
 - Bouton « Citation au hasard »
+- Quiz « Jean-Philippe a-t-il dit ça ? » : une vraie citation, trois impostures
 
 ## Structure
 
-- `index.html` — page principale
-- `data.js` — les citations (chapitre, texte, source)
-- `app.js` — logique de recherche, filtres et affichage
-- `style.css` — styles
+- `index.html` – page principale
+- `data.js` – les citations (chapitre, texte, source)
+- `app.js` – logique de recherche, filtres et affichage
+- `style.css` – styles
+- `quiz.js` – questions du quiz (une vraie citation, trois fausses)
 
 ## Publier sur GitHub Pages
 
@@ -30,4 +32,4 @@ Dans `data.js`, ajoutez une ligne dans `QUOTES` :
 { chapter: "voix", text: "Votre citation ici", source: "Œuvre, année" },
 ```
 
-> « Faire n'importe quoi, ce n'est pas être libre, c'est être dingue. » — J.-P. Sarcos (Requiem, Mozart, 2022)
+> « Faire n'importe quoi, ce n'est pas être libre, c'est être dingue. » – J.-P. Sarcos (Requiem, Mozart, 2022)
