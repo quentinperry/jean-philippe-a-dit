@@ -1,6 +1,6 @@
 # jean-philippe-a-dit
 
-Site de recueil des citations de **Jean-Philippe Sarcos**, chef de chœur — perles recueillies par plusieurs générations d'académiciens pendant les répétitions.
+Site de recueil des citations de **Jean-Philippe Sarcos**, chef de chœur – perles recueillies par plusieurs générations d'académiciens pendant les répétitions.
 
 ## Fonctionnalités
 
@@ -12,11 +12,11 @@ Site de recueil des citations de **Jean-Philippe Sarcos**, chef de chœur — pe
 
 ## Structure
 
-- `index.html` — page principale
-- `data.js` — les citations (chapitre, texte, source)
-- `app.js` — logique de recherche, filtres et affichage
-- `style.css` — styles
-- `server.js` — serveur HTTP sans dépendance (API REST + fichiers statiques), stockage dans `quotes.json`
+- `index.html` – page principale
+- `data.js` – les citations (chapitre, texte, source)
+- `app.js` – logique de recherche, filtres et affichage
+- `style.css` – styles
+- `server.js` – serveur HTTP sans dépendance (API REST + fichiers statiques), stockage dans `quotes.json`
 
 ## Backend (citations mutualisées)
 
@@ -30,9 +30,9 @@ Puis ouvrez `http://localhost:3000`. Les citations ajoutées via le formulaire s
 
 ### API
 
-- `GET /api/quotes` — liste des citations mutualisées
-- `POST /api/quotes` — ajouter `{ chapter, text, work?, year? }`
-- `DELETE /api/quotes/:id` — supprimer une citation
+- `GET /api/quotes` – liste des citations mutualisées
+- `POST /api/quotes` – ajouter `{ chapter, text, work?, year? }`
+- `DELETE /api/quotes/:id` – supprimer une citation
 
 ## Publier sur GitHub Pages
 
@@ -54,4 +54,4 @@ Cliquez sur « ＋ Ajouter une citation », choisissez la catégorie, saisissez 
 { chapter: "voix", text: "Votre citation ici", source: "Œuvre, année" },
 ```
 
-> « Faire n'importe quoi, ce n'est pas être libre, c'est être dingue. » — J.-P. Sarcos (Requiem, Mozart, 2022)
+> « Faire n'importe quoi, ce n'est pas être libre, c'est être dingue. » – J.-P. Sarcos (Requiem, Mozart, 2022)

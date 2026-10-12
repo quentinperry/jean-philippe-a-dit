@@ -140,7 +140,7 @@ const server = http.createServer(async (req, res) => {
 
 if (require.main === module) {
   server.listen(PORT, () => {
-    console.log("Jean-Philippe a dit — http://localhost:" + PORT);
+    console.log("Jean-Philippe a dit – http://localhost:" + PORT);
   });
 }
 
