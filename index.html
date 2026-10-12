@@ -15,7 +15,32 @@
 <div class="toolbar">
   <input id="search" class="search" type="search" placeholder="Rechercher une citation, une œuvre, une année…">
   <button id="randomBtn" class="btn-random">🎲 Citation au hasard</button>
+  <button id="addBtn" class="btn-add">＋ Ajouter une citation</button>
 </div>
+<section id="addForm" class="add-form hidden">
+  <h2 class="add-form-title">Ajouter une citation</h2>
+  <div class="add-form-fields">
+    <label class="add-form-label">Catégorie
+      <select id="newChapter" class="add-form-input" required></select>
+    </label>
+    <label class="add-form-label add-form-wide">Citation
+      <textarea id="newText" class="add-form-input" rows="3" placeholder="« Votre citation ici »" required></textarea>
+    </label>
+    <div class="add-form-row">
+      <label class="add-form-label">Œuvre
+        <input id="newWork" class="add-form-input" type="text" placeholder="Requiem, Mozart">
+      </label>
+      <label class="add-form-label">Année
+        <input id="newYear" class="add-form-input" type="text" placeholder="2024" inputmode="numeric">
+      </label>
+    </div>
+  </div>
+  <p id="addError" class="add-form-error hidden"></p>
+  <div class="add-form-actions">
+    <button id="addCancel" class="btn-ghost">Annuler</button>
+    <button id="addSubmit" class="btn-random">Ajouter</button>
+  </div>
+</section>
 <nav id="chapters" class="chapters"></nav>
 <section id="spotlight" class="random-spotlight hidden"></section>
 <p id="count" class="results-count"></p>

@@ -1,5 +1,29 @@
 (function () {
   var state = { query: "", chapter: "all" };
+  var CUSTOM_KEY = "jp-adit-custom-quotes";
+
+  function loadCustom() {
+    try { return JSON.parse(localStorage.getItem(CUSTOM_KEY)) || []; }
+    catch (e) { return []; }
+  }
+
+  function saveCustom(list) {
+    localStorage.setItem(CUSTOM_KEY, JSON.stringify(list));
+  }
+
+  function escapeHTML(s) {
+    return (s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+
+  function customList() {
+    return loadCustom().map(function (c) {
+      return { chapter: c.chapter, text: c.text, source: c.source, custom: true, id: c.id };
+    });
+  }
+
+  function allQuotes() {
+    return QUOTES.concat(customList());
+  }
 
   function normalize(s) {
     return (s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -18,16 +42,18 @@
 
   function cardHTML(q) {
     var ch = chapterById(q.chapter);
-    var src = q.source ? "— " + q.source : "— Source inconnue";
-    return '<figure class="quote-card"><span class="quote-mark">«</span>' +
+    var src = q.source ? "— " + escapeHTML(q.source) : "— Source inconnue";
+    var del = q.custom ? '<button class="quote-delete" data-id="' + q.id + '" title="Supprimer cette citation">✕</button>' : "";
+    return '<figure class="quote-card"><span class="quote-mark">«</span>' + del +
       '<blockquote class="quote-text">' + highlight(q.text, state.query.trim()) + "</blockquote>" +
       '<figcaption class="quote-source"><span>' + src + "</span>" +
-      '<span class="quote-chapter">' + ch.emoji + " " + ch.label + "</span></figcaption></figure>";
+      '<span class="quote-chapter">' + ch.emoji + " " + escapeHTML(ch.label) + "</span></figcaption></figure>";
   }
 
   function render() {
     var q = normalize(state.query.trim());
-    var filtered = QUOTES.filter(function (qt) {
+    var quotes = allQuotes();
+    var filtered = quotes.filter(function (qt) {
       var okChapter = state.chapter === "all" || qt.chapter === state.chapter;
       var okQuery = !q || normalize(qt.text).includes(q) || normalize(qt.source).includes(q);
       return okChapter && okQuery;
@@ -40,15 +66,20 @@
   }
 
   function renderChips() {
+    var quotes = allQuotes();
     var counts = {};
-    QUOTES.forEach(function (q) { counts[q.chapter] = (counts[q.chapter] || 0) + 1; });
+    quotes.forEach(function (q) { counts[q.chapter] = (counts[q.chapter] || 0) + 1; });
     var nav = document.getElementById("chapters");
-    var html = '<button class="chip active" data-ch="all">Toutes <span class="count">' + QUOTES.length + "</span></button>";
+    var html = '<button class="chip' + (state.chapter === "all" ? " active" : "") + '" data-ch="all">Toutes <span class="count">' + quotes.length + "</span></button>";
     CHAPTERS.forEach(function (c) {
-      html += '<button class="chip" data-ch="' + c.id + '">' + c.emoji + " " + c.label +
+      html += '<button class="chip' + (state.chapter === c.id ? " active" : "") + '" data-ch="' + c.id + '">' + c.emoji + " " + c.label +
         ' <span class="count">' + (counts[c.id] || 0) + "</span></button>";
     });
     nav.innerHTML = html;
+  }
+
+  function bindChips() {
+    var nav = document.getElementById("chapters");
     nav.addEventListener("click", function (e) {
       var btn = e.target.closest(".chip");
       if (!btn) return;
@@ -67,13 +98,70 @@
   });
 
   document.getElementById("randomBtn").addEventListener("click", function () {
-    var pool = state.chapter === "all" ? QUOTES : QUOTES.filter(function (q) { return q.chapter === state.chapter; });
+    var quotes = allQuotes();
+    var pool = state.chapter === "all" ? quotes : quotes.filter(function (q) { return q.chapter === state.chapter; });
     var q = pool[Math.floor(Math.random() * pool.length)];
     var spot = document.getElementById("spotlight");
     spot.classList.remove("hidden");
     spot.innerHTML = cardHTML(q);
   });
 
-  renderChips();
+  function fillChapterSelect() {
+    var sel = document.getElementById("newChapter");
+    sel.innerHTML = CHAPTERS.map(function (c) {
+      return '<option value="' + c.id + '">' + c.emoji + " " + c.label + "</option>";
+    }).join("");
+  }
+
+  function buildSource(work, year) {
+    var parts = [];
+    if (work) parts.push(work.trim());
+    if (year) parts.push(year.trim());
+    return parts.join(", ");
+  }
+
+  document.getElementById("addBtn").addEventListener("click", function () {
+    var form = document.getElementById("addForm");
+    form.classList.remove("hidden");
+    document.getElementById("addError").classList.add("hidden");
+    document.getElementById("newText").focus();
+  });
+
+  document.getElementById("addCancel").addEventListener("click", function () {
+    document.getElementById("addForm").classList.add("hidden");
+  });
+
+  document.getElementById("addSubmit").addEventListener("click", function () {
+    var chapter = document.getElementById("newChapter").value;
+    var text = document.getElementById("newText").value.trim();
+    var source = buildSource(document.getElementById("newWork").value, document.getElementById("newYear").value);
+    var err = document.getElementById("addError");
+    if (!text) {
+      err.textContent = "La citation ne peut pas être vide.";
+      err.classList.remove("hidden");
+      return;
+    }
+    var list = loadCustom();
+    list.push({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 7), chapter: chapter, text: text, source: source });
+    saveCustom(list);
+    document.getElementById("newText").value = "";
+    document.getElementById("newWork").value = "";
+    document.getElementById("newYear").value = "";
+    document.getElementById("addForm").classList.add("hidden");
+    renderChips();
+    render();
+  });
+
+  document.getElementById("grid").addEventListener("click", function (e) {
+    var btn = e.target.closest(".quote-delete");
+    if (!btn) return;
+    var list = loadCustom().filter(function (c) { return c.id !== btn.dataset.id; });
+    saveCustom(list);
+    renderChips();
+    render();
+  });
+
+  fillChapterSelect();
+  bindChips();
   render();
 })();

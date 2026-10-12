@@ -8,6 +8,7 @@ Site de recueil des citations de **Jean-Philippe Sarcos**, chef de chœur — pe
 - Recherche plein texte (citation, œuvre, année) avec surlignage
 - Filtres par chapitre
 - Bouton « Citation au hasard »
+- Ajout de citations depuis le site (catégorie, œuvre, année), sauvegardées dans le navigateur (localStorage) et supprimables d'un clic
 
 ## Structure
 
@@ -25,6 +26,13 @@ Site de recueil des citations de **Jean-Philippe Sarcos**, chef de chœur — pe
 ## Ajouter une citation
 
 Dans `data.js`, ajoutez une ligne dans `QUOTES` :
+
+### Depuis le site
+Cliquez sur « ＋ Ajouter une citation », choisissez la catégorie, saisissez la citation, l'œuvre et l'année, puis validez. La citation est ajoutée immédiatement et sauvegardée dans votre navigateur (localStorage) ; elle est supprimable via le bouton ✕ sur la carte.
+
+> Les citations ajoutées en ligne ne sont visibles que dans votre navigateur. Pour les partager, ajoutez-les aussi dans `data.js`.
+
+### Manuellement, dans data.js
 
 ```js
 { chapter: "voix", text: "Votre citation ici", source: "Œuvre, année" },
