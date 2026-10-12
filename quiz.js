@@ -4,9 +4,9 @@
     {
       real: "Ne pas faire le poulet",
       fakes: [
-        "Ne pas chanter comme une grenouille vexée",
         "Ne pas avoir l'air d'un gorille à la brasserie",
-        "Ne pas pouliner avant le dernier accord"
+        "Ne pas pouliner avant le dernier accord",
+        "Ne pas sourire comme un mariage raté"
       ]
     },
     {
@@ -34,14 +34,6 @@
       ]
     },
     {
-      real: "On travaille comme des écrevisses : à reculons",
-      fakes: [
-        "On avance comme un dimanche après-midi en province",
-        "On attaque ce passage comme une soupe tiède",
-        "On ressemble à une birthday party surprise mais sans la surprise"
-      ]
-    },
-    {
       real: "Rangez-moi ces téléphones portables ou je vous mords",
       fakes: [
         "Le prochain qui baille, je le coupe du solo",
@@ -55,22 +47,6 @@
         "Faites sonner le « V » comme une barque amarrée un soir d'été",
         "Faites le « V » comme un stylo bureaucrate qui signe sans lire",
         "Faites ce « V » comme un escalier roulant aux Galeries Lafayette"
-      ]
-    },
-    {
-      real: "Ne chantez pas comme un poulet malade avec une patte cassée !",
-      fakes: [
-        "Ne me faites pas croire que je dirige un sauna en Finlande !",
-        "Vous chantez comme un groupe scolaire perdu à la gare du Nord !",
-        "On dirait un enterrement avec une fanfare devenue sourde !"
-      ]
-    },
-    {
-      real: "Imaginez que vous êtes un rhinocéros : faites passer le son par la corne",
-      fakes: [
-        "Imaginez-vous phare de bateau : balayez la salle avec le son",
-        "Soyez un facteur heureux : la lettre doit arriver au fond de la salle",
-        "Faites le rameur du dimanche matin, mais sans éclaboussures"
       ]
     },
     {
@@ -95,6 +71,62 @@
         "Vous êtes des phonographes fatigués !",
         "Vous êtes des parapluies retournés dans un salon !",
         "Vous êtes des meringues un jour de canicule !"
+      ]
+    },
+    {
+      real: "Mozart quand il a écrit ça, il ne regardait pas BFM Business",
+      fakes: [
+        "Verdi n'écrivait pas ses requiem en écoutant la météo des plages",
+        "Bach n'a jamais composé entre deux publicités de yaourt",
+        "Haendel ne vérifiait pas ses airs sur les réseaux sociaux"
+      ]
+    },
+    {
+      real: "Faire n'importe quoi, ce n'est pas être libre, c'est être dingue",
+      fakes: [
+        "L'indiscipline, ce n'est pas de la spontanéité, c'est du vandalisme",
+        "Se laisser aller, ce n'est pas de la sagesse, c'est de la rouille",
+        "Improviser sans savoir, ce n'est pas du talent, c'est de la loterie"
+      ]
+    },
+    {
+      real: "N'ayez pas une respiration étriquée, ayez une respiration royale",
+      fakes: [
+        "Ne respirez pas comme un locataire, respirez comme un propriétaire",
+        "Votre souffle doit être un bal expérimental, pas une salle d'attente",
+        "Respirez comme si les Habsbourg vous regardaient depuis le balcon"
+      ]
+    },
+    {
+      real: "Vous y penserez, le jour du concert, que je vous ai traités de mulets",
+      fakes: [
+        "Le jour du concert, vous regretterez ces raviolis que je vous ai servis",
+        "Vous vous souviendrez du concert que je vous ai fait ranger comme du linge",
+        "Le soir de la première, vous m'écrivez une lettre pour ces klaxons"
+      ]
+    },
+    {
+      real: "Il faut jouer sa vie sur chaque note !",
+      fakes: [
+        "Chaque silence doit vous coûter une nuit blanche !",
+        "Il faut parier son mois de salaire sur chaque mesure !",
+        "Il faut disparaître dans chaque note comme un magicien dans son chapeau !"
+      ]
+    },
+    {
+      real: "Moi ce que j'entends, ce sont les hommes du XXIe siècle qui se font complètement bouffer par les femmes",
+      fakes: [
+        "Ce que j'entends, c'est la joie de vivre des machines à laver du siècle dernier",
+        "Moi j'entends des chanteurs du dimanche qui ont peur de leur propre télévision",
+        "Ce que je perçois, c'est la nostalgie d'une époque où l'on aimait les accordéons"
+      ]
+    },
+    {
+      real: "C'est un motif de gazelle, pas d'hippopotame !",
+      fakes: [
+        "C'est une arabesque de dentelle, pas de tôle ondulée !",
+        "C'est une phrase de soie, pas de béton armé !",
+        "Ce mouvement-là, c'est du papier de soie, pas du carrelage !"
       ]
     }
   ];
