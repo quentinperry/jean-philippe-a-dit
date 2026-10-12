@@ -128,6 +128,118 @@
         "C'est une phrase de soie, pas de béton armé !",
         "Ce mouvement-là, c'est du papier de soie, pas du carrelage !"
       ]
+    },
+    {
+      real: "C'est vrai que ce que je dis est toujours très bien",
+      fakes: [
+        "Il faut reconnaître que je n'ai jamais eu tort depuis 1987",
+        "Admettez que mes phrases mériteraient des médailles olympiques",
+        "On me le dit souvent : je parle comme un dictionnaire illustré"
+      ]
+    },
+    {
+      real: "Je prends les ténors dans les toilettes. Le vestiaire, pardon. Vous allez voir, ça va bien se passer.",
+      fakes: [
+        "Les basses, on se retrouve au buffet de la gare. Le salon de thé, pardon.",
+        "Les altis, je vous attendrai dans l'escalier de service. L'ascenseur, pardon.",
+        "Les sopranes, rendez-vous à la cave. Le paradis, pardon."
+      ]
+    },
+    {
+      real: "Imaginez tous les morts depuis la nuit des temps qui sortent du tombeau",
+      fakes: [
+        "Imaginez tous les couscous de l'histoire refroidis en même temps",
+        "Pensez à tous les parapluies abandonnés depuis la guerre qui s'ouvrent d'un coup",
+        "Visualisez toutes les chaussettes perdues qui descendent vers vous"
+      ]
+    },
+    {
+      real: "Vous savez, quand le riz est trop cuit, il colle. Ne collez pas",
+      fakes: [
+        "Quand la confiture prend, elle refuse le pain. Ne refusez pas",
+        "Un tapioca malheureux, ça fait des grumeaux. Ne grumelez pas",
+        "La polenta quand elle refroidit devient un paysage. Ne devenez pas un paysage"
+      ]
+    },
+    {
+      real: "Il faut que ce soit hystérique : moins, ce sera merdique",
+      fakes: [
+        "Il faut du délire : en dessous, c'est de la confiture",
+        "Je veux de la folie furieuse : sinon c'est de la salle d'attente",
+        "Il me faut du vertige : moins, c'est du pop-corn sans sel"
+      ]
+    },
+    {
+      real: "Le cœur contrit comme des nanoparticules",
+      fakes: [
+        "Le cœur brisé comme des draps d'hôpital",
+        "Le cœur confit comme des tomates du sud en été",
+        "Le cœur ému comme des confettis de mariage"
+      ]
+    },
+    {
+      real: "Écoutez les violons, c'est comme des vaguelettes qui viennent lécher le Royaume-Uni",
+      fakes: [
+        "Écoutez les violons, c'est comme du beurre qui fond sur un toast d'Écosse",
+        "Les altos, on dirait des ruisseaux qui bavardent avec la Belgique",
+        "Entendez les violoncelles, c'est une marmaille qui chatouille l'Irlande"
+      ]
+    },
+    {
+      real: "Parlez sombrement, un peu comme un fantôme",
+      fakes: [
+        "Parlez chaudement, comme un chocolat de garde",
+        "Parlez avec moquette, comme un grand-père en décembre",
+        "Parlez en velours côtelé, comme un bibliothécaire en colère"
+      ]
+    },
+    {
+      real: "Cet accent, c'est pour faire peur à l'hiver",
+      fakes: [
+        "Cet accent-là, c'est pour réveiller les fleurs de printemps",
+        "Ce fortissimo servira à faire fuir les moineaux du beffroi",
+        "Cet accent, c'est un cache-nez pour les mois de novembre"
+      ]
+    },
+    {
+      real: "Avec nos mots, il faut faire des robes du XVIIIe siècle",
+      fakes: [
+        "Avec nos notes, il faut coudre des costumes de carnaval vénitiens",
+        "Nos phrases doivent porter des gants de soie et rien d'autre",
+        "Chaque mot doit avoir la coupe d'un costume de gala au Kiosque"
+      ]
+    },
+    {
+      real: "Bon, la fraternité... on a pas le même père, je ne sais pas ce que ça veut dire",
+      fakes: [
+        "L'égalité, très bien, mais on n'a pas tous le même dentiste",
+        "La solidarité, parfait, mais on ne prend pas le même métro",
+        "La liberté, certes, mais on n'a pas tous le même facteur"
+      ]
+    },
+    {
+      real: "N'hésitez pas à sentir bon en venant chanter",
+      fakes: [
+        "N'oubliez pas d'apporter un petit cadeaux au pupitre d'en face",
+        "Pensez à repasser vos chemises avant le Dies Irae",
+        "Je vous demande simplement de ne pas apporter de sandwichs au thon"
+      ]
+    },
+    {
+      real: "Le chœur, vous arrivez comme un gros paquebot dans la ville de Venise",
+      fakes: [
+        "Vous entrez dans ce morceau comme une délicate barquette de fruits de mer",
+        "Le chœur doit surgir comme un dimanche pluvieux à Lourdes",
+        "Vous déboulez dans la phrase comme une lessiveuse dans un salon Louis XV"
+      ]
+    },
+    {
+      real: "Est-ce que vous entendez le caractère maléfique de la voyelle « T » nasalisée ?",
+      fakes: [
+        "Avez-vous senti l'humilité secrète de la consonne « R » roulée à l'anglaise ?",
+        "Entendez-vous la jalousie bourgeoise du diphtongue « oi » de « droit » ?",
+        "Percevez-vous la mélancolie du « M » final quand il pense à dimanche ?"
+      ]
     }
   ];
 })();
