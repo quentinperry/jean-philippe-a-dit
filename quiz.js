@@ -1,2 +1,101 @@
 // Quiz « Jean-Philippe a-t-il dit ça ? » : une vraie citation, trois impostures.
-(function () {  window.QUIZ_DATA = [    {      real: "Ne pas faire le poulet",      fakes: [        "Ne pas chanter comme un canard",        "Ne pas faire le paon",        "Évitez de cocotter comme une poule"      ]    },    {      real: "Vous aviez l'enthousiasme d'une vache qui regarde la fin du train passer",      fakes: [        "Vous aviez l'allant d'une marmotte qui regarde passer le TGV",        "Vous aviez la vivacité d'un mouton qui regarde la pluie tomber",        "Vous aviez l'énergie d'une vache qui attend que l'herbe pousse"      ]    },    {      real: "Chuchotez, ça fait secte, c'est très bien",      fakes: [        "Chuchotez, ça fait mystère, j'adore",        "Murmurez, ça fait conspiration, très bien",        "Chuchotez, on dirait des nonnes, c'est parfait"      ]    },    {      real: "Un accent, ce n'est pas quelque chose qu'on appuie, mais quelque chose qu'on soulève",      fakes: [        "Un accent, ce n'est pas quelque chose qu'on crie, mais quelque chose qu'on dépose",        "Un accent, ce n'est pas une charge, c'est une caresse",        "Un accent, ce n'est pas une pression, c'est une ascension"      ]    },    {      real: "On travaille comme des écrevisses : à reculons",      fakes: [        "On travaille comme des escargots : sans hâte",        "On avance comme des crabes : de côté",        "On progresse comme des fourmis : en silence"      ]    },    {      real: "Rangez-moi ces téléphones portables ou je vous mords",      fakes: [        "Rangez-moi ces téléphones portables ou je hurle",        "Cachez-moi ces téléphones ou je vous griffe",        "Rangerez ces téléphones, ou je vous pince"      ]    },    {      real: "Faites sonner le « V » comme un bout de plastique sur un ventilateur",      fakes: [        "Faites sonner le « V » comme un billet de banque dans la machine à laver",        "Faites vibrer le « V » comme un volet qui claque au vent",        "Faites claquer le « V » comme une porte de frigo qu'on referme"      ]    },    {      real: "Ne chantez pas comme un poulet malade avec une patte cassée !",      fakes: [        "Ne chantez pas comme un pigeon effarouché par un chat !",        "Ne chantez pas comme une poule mouillée sous la pluie !",        "Ne chantez pas comme un coq enrhumé un matin d'hiver !"      ]    },    {      real: "Imaginez que vous êtes un rhinocéros : faites passer le son par la corne",      fakes: [        "Imaginez que vous êtes un éléphant : faites passer le son par la trompe",        "Imaginez que vous êtes un tatou : faites passer le son par la carapace",        "Imaginez que vous êtes un cerf : faites passer le son par les bois"      ]    },    {      real: "Là, ce doit être pianississimo ! Bon, les alti, vous pouvez y aller forte",      fakes: [        "Là, ce doit être fortissimo ! Bon, les alti, restez piano",        "Là, c'est mezzoforte ! Bon, les basses, vous pouvez y aller fort",        "Là, ce doit être très doux ! Bon, les sopranes, vous pouvez y aller"      ]    }  ];})();
+(function () {
+  window.QUIZ_DATA = [
+    {
+      real: "Ne pas faire le poulet",
+      fakes: [
+        "Ne pas chanter comme une grenouille vexée",
+        "Ne pas avoir l'air d'un gorille à la brasserie",
+        "Ne pas pouliner avant le dernier accord"
+      ]
+    },
+    {
+      real: "Vous aviez l'enthousiasme d'une vache qui regarde la fin du train passer",
+      fakes: [
+        "Vous aviez la grâce d'un sas de piscine un dimanche de pluie",
+        "Vous aviez l'élan d'un fauteuil à la salle d'attente du dentiste",
+        "Vous aviez la passion d'un parcmètre en panne le jour férié"
+      ]
+    },
+    {
+      real: "Chuchotez, ça fait secte, c'est très bien",
+      fakes: [
+        "Chantez faux, ça fait humain, j'adore ça",
+        "Plaignez-vous, ça fait artiste, continuez",
+        "Voyagez en pensée, ça fait intellectuel, parfait"
+      ]
+    },
+    {
+      real: "Un accent, ce n'est pas quelque chose qu'on appuie, mais quelque chose qu'on soulève",
+      fakes: [
+        "Un accent, c'est comme un cache-pot : ça doit reposer quelque chose de vivant",
+        "Un accent, c'est une baguette de chef qui ne toucherait jamais l'orchestre",
+        "Un accent, c'est l'arôme du morceau : trop de vanille et on n'a plus de dessert"
+      ]
+    },
+    {
+      real: "On travaille comme des écrevisses : à reculons",
+      fakes: [
+        "On avance comme un dimanche après-midi en province",
+        "On attaque ce passage comme une soupe tiède",
+        "On ressemble à une birthday party surprise mais sans la surprise"
+      ]
+    },
+    {
+      real: "Rangez-moi ces téléphones portables ou je vous mords",
+      fakes: [
+        "Le prochain qui baille, je le coupe du solo",
+        "Je vais finir par louer des taxis pour vous faire répéter à l'heure",
+        "Celui qui chuchote encore, je le nomme président du chœur"
+      ]
+    },
+    {
+      real: "Faites sonner le « V » comme un bout de plastique sur un ventilateur",
+      fakes: [
+        "Faites sonner le « V » comme une barque amarrée un soir d'été",
+        "Faites le « V » comme un stylo bureaucrate qui signe sans lire",
+        "Faites ce « V » comme un escalier roulant aux Galeries Lafayette"
+      ]
+    },
+    {
+      real: "Ne chantez pas comme un poulet malade avec une patte cassée !",
+      fakes: [
+        "Ne me faites pas croire que je dirige un sauna en Finlande !",
+        "Vous chantez comme un groupe scolaire perdu à la gare du Nord !",
+        "On dirait un enterrement avec une fanfare devenue sourde !"
+      ]
+    },
+    {
+      real: "Imaginez que vous êtes un rhinocéros : faites passer le son par la corne",
+      fakes: [
+        "Imaginez-vous phare de bateau : balayez la salle avec le son",
+        "Soyez un facteur heureux : la lettre doit arriver au fond de la salle",
+        "Faites le rameur du dimanche matin, mais sans éclaboussures"
+      ]
+    },
+    {
+      real: "Là, ce doit être pianississimo ! Bon, les alti, vous pouvez y aller forte",
+      fakes: [
+        "Là, tout doit être dentelle ! Bon, les basses, ne me faites pas peur",
+        "Là, on doit frôler le silence ! Bon, les sopranes, éclatez-vous",
+        "Là, je veux du velours ! Bon, les ténors, soyez des tapis"
+      ]
+    },
+    {
+      real: "Je ne suis pas contre la violence",
+      fakes: [
+        "La douceur, c'est pour les gens qui n'ont pas de tempo",
+        "Un chef sans ennemis n'a pas de carrière",
+        "Il faut parfois hurler avec les loups pour être entendu des agneaux"
+      ]
+    },
+    {
+      real: "Vous êtes farces tout de même !",
+      fakes: [
+        "Vous êtes des phonographes fatigués !",
+        "Vous êtes des parapluies retournés dans un salon !",
+        "Vous êtes des meringues un jour de canicule !"
+      ]
+    }
+  ];
+})();
