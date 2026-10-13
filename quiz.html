@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le quiz – Jean-Philippe a-t-il dit ça ?</title>
+<meta name="description" content="Une citation est authentique, trois sont des impostures. Saurez-vous démasquer les impostures du chef de chœur Jean-Philippe Sarcos ?">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="quiz-page">
+<a class="skip-link" href="#quizGame">Aller au quiz</a>
+
+<header class="quiz-hero">
+  <div class="quiz-hero-inner">
+    <a class="back-link" href="index.html">
+      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M14.7 5.3a1 1 0 0 1 0 1.4L9.4 12l5.3 5.3a1 1 0 0 1-1.4 1.4l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 0 1 1.4 0Z"/></svg>
+      Toutes les citations
+    </a>
+    <h1 class="quiz-hero-title">Jean-Philippe a-t-il dit ça&nbsp;?</h1>
+    <p class="quiz-hero-sub">Une citation est authentique. Trois sont des impostures.<br>Saurez-vous les démasquer&nbsp;?</p>
+  </div>
+</header>
+
+<main class="quiz-wrap">
+  <section class="quiz" aria-label="Quiz">
+    <div class="quiz-head">
+      <p id="quizScore" class="quiz-score hidden">Score&nbsp;: <span id="quizScoreValue">0</span> / <span id="quizPlayedValue">0</span></p>
+    </div>
+    <div id="quizGame" aria-live="polite"></div>
+    <button id="quizNext" class="btn btn-primary hidden">Question suivante</button>
+  </section>
+</main>
+
+<script src="quiz.js"></script>
+<script src="quiz-page.js"></script>
+</body>
+</html>

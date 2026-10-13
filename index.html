@@ -35,6 +35,10 @@
     <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M11 5a1 1 0 1 1 2 0v6h6a1 1 0 1 1 0 2h-6v6a1 1 0 1 1-2 0v-6H5a1 1 0 1 1 0-2h6Z"/></svg>
     Ajouter
   </button>
+  <a href="quiz.html" class="btn btn-secondary">
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 3a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm1 11h-2a1 1 0 1 1 0-2h.5a.5.5 0 0 0 .5-.5V11h-.5a1 1 0 1 1 0-2H12a1 1 0 0 1 1 1v3.5a.5.5 0 0 0 .5.5h.5a1 1 0 1 1 0 2Z"/></svg>
+    Quiz
+  </a>
 </div>
 
 <section id="addForm" class="add-form hidden" aria-label="Ajouter une citation">
@@ -66,20 +70,20 @@
 <section id="spotlight" class="random-spotlight hidden" aria-label="Citation tirée au hasard"></section>
 <p id="count" class="results-count" aria-live="polite"></p>
 
-<section id="quiz" class="quiz" aria-labelledby="quizTitle">
-  <div class="quiz-head">
-    <div>
-      <h2 class="quiz-title" id="quizTitle">Jean-Philippe a-t-il dit ça ?</h2>
-      <p class="quiz-intro">Une citation est authentique. Trois sont des impostures. Saurez-vous les démasquer ?</p>
-    </div>
-    <p id="quizScore" class="quiz-score hidden">Score&nbsp;: <span id="quizScoreValue">0</span> / <span id="quizPlayedValue">0</span></p>
-  </div>
-  <div id="quizGame"></div>
-  <button id="quizNext" class="btn btn-primary hidden">Question suivante</button>
-</section>
-
 <main id="grid" class="grid" aria-label="Citations"></main>
 <p id="empty" class="empty hidden">Aucune citation trouvée. « Vous me faites radoter », essayez autre chose !</p>
+
+<section class="quiz-teaser" aria-label="Quiz">
+  <div class="quiz-teaser-text">
+    <p class="quiz-teaser-kicker">Le jeu</p>
+    <h2 class="quiz-teaser-title">Jean-Philippe a-t-il dit ça ?</h2>
+    <p class="quiz-teaser-sub">Une citation est authentique. Trois sont des impostures. Saurez-vous les démasquer ?</p>
+  </div>
+  <a href="quiz.html" class="btn btn-primary">
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7L8 5Z"/></svg>
+    Jouer au quiz
+  </a>
+</section>
 
 <footer class="footer">
   <blockquote class="footer-quote">
@@ -91,7 +95,6 @@
 </footer>
 
 <script src="data.js"></script>
-<script src="quiz.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
