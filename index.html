@@ -4,21 +4,40 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jean-Philippe a dit – Recueil de citations</title>
+<meta name="description" content="Les perles du chef de chœur Jean-Philippe Sarcos, recueillies par plusieurs générations d'académiciens pendant les répétitions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <a class="skip-link" href="#grid">Aller aux citations</a>
+
 <header class="hero">
-  <p class="hero-kicker">Recueillies par plusieurs générations d'académiciens</p>
-  <h1 class="hero-title">« Jean-Philippe a dit »</h1>
-  <p class="hero-sub">Les perles du chef de chœur <strong>Jean-Philippe Sarcos</strong>, répétition après répétition.</p>
+  <div class="hero-inner">
+    <p class="hero-kicker">Recueillies par plusieurs générations d'académiciens</p>
+    <h1 class="hero-title"><span class="hero-quote-mark">«</span> Jean-Philippe a dit <span class="hero-quote-mark">»</span></h1>
+    <p class="hero-sub">Les perles du chef de chœur <strong>Jean-Philippe Sarcos</strong>, répétition après répétition.</p>
+    <div class="hero-stats" id="heroStats"></div>
+  </div>
 </header>
+
 <div class="toolbar" role="search">
-  <input id="search" class="search" type="search" placeholder="Rechercher une citation, une œuvre, une année…">
-  <button id="randomBtn" class="btn-random">🎲 Citation au hasard</button>
-  <button id="addBtn" class="btn-add">＋ Ajouter une citation</button>
+  <div class="search-wrap">
+    <svg class="search-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8.5 3a5.5 5.5 0 1 0 3.4 9.8l4.1 4.1a1 1 0 0 0 1.4-1.4l-4.1-4.1A5.5 5.5 0 0 0 8.5 3Zm0 2a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7Z"/></svg>
+    <input id="search" class="search" type="search" placeholder="Rechercher une citation, une œuvre, une année…" aria-label="Rechercher une citation">
+  </div>
+  <button id="randomBtn" class="btn btn-primary">
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 2a8 8 0 0 1 4.9 1.7L5.7 15.9A8 8 0 0 1 12 4Zm0 16a8 8 0 0 1-4.9-1.7L18.3 8.1A8 8 0 0 1 12 20Z"/></svg>
+    Au hasard
+  </button>
+  <button id="addBtn" class="btn btn-secondary">
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M11 5a1 1 0 1 1 2 0v6h6a1 1 0 1 1 0 2h-6v6a1 1 0 1 1-2 0v-6H5a1 1 0 1 1 0-2h6Z"/></svg>
+    Ajouter
+  </button>
 </div>
-<section id="addForm" class="add-form hidden">
+
+<section id="addForm" class="add-form hidden" aria-label="Ajouter une citation">
   <h2 class="add-form-title">Ajouter une citation</h2>
   <div class="add-form-fields">
     <label class="add-form-label">Catégorie
@@ -36,25 +55,32 @@
       </label>
     </div>
   </div>
-  <p id="addError" class="add-form-error hidden"></p>
+  <p id="addError" class="add-form-error hidden" role="alert"></p>
   <div class="add-form-actions">
-    <button id="addCancel" class="btn-ghost">Annuler</button>
-    <button id="addSubmit" class="btn-random">Ajouter</button>
+    <button id="addCancel" class="btn btn-ghost">Annuler</button>
+    <button id="addSubmit" class="btn btn-primary">Ajouter</button>
   </div>
 </section>
+
 <nav id="chapters" class="chapters" aria-label="Filtrer par chapitre"></nav>
-<section id="spotlight" class="random-spotlight hidden"></section>
-<p id="count" class="results-count"></p>
+<section id="spotlight" class="random-spotlight hidden" aria-label="Citation tirée au hasard"></section>
+<p id="count" class="results-count" aria-live="polite"></p>
+
 <section id="quiz" class="quiz" aria-labelledby="quizTitle">
-  <h2 class="quiz-title" id="quizTitle">Le quiz : Jean-Philippe a-t-il dit ça ?</h2>
-  <p class="quiz-intro">Une citation est authentique. Trois sont des impostures. Saurez-vous les démasquer ?</p>
-  <p id="quizScore" class="quiz-score hidden">Score : <span id="quizScoreValue">0</span> / <span id="quizPlayedValue">0</span></p>
+  <div class="quiz-head">
+    <div>
+      <h2 class="quiz-title" id="quizTitle">Jean-Philippe a-t-il dit ça ?</h2>
+      <p class="quiz-intro">Une citation est authentique. Trois sont des impostures. Saurez-vous les démasquer ?</p>
+    </div>
+    <p id="quizScore" class="quiz-score hidden">Score&nbsp;: <span id="quizScoreValue">0</span> / <span id="quizPlayedValue">0</span></p>
+  </div>
   <div id="quizGame"></div>
-  <button id="quizNext" class="btn-random hidden">Question suivante</button>
+  <button id="quizNext" class="btn btn-primary hidden">Question suivante</button>
 </section>
 
 <main id="grid" class="grid" aria-label="Citations"></main>
 <p id="empty" class="empty hidden">Aucune citation trouvée. « Vous me faites radoter », essayez autre chose !</p>
+
 <footer class="footer">
   <blockquote class="footer-quote">
     « La Musique pour moi représente tout. C'est l'Art le plus complet. Qu'est-ce qu'il y a dans la
@@ -63,6 +89,7 @@
     <cite>Georges Prêtre</cite>
   </blockquote>
 </footer>
+
 <script src="data.js"></script>
 <script src="quiz.js"></script>
 <script src="app.js"></script>

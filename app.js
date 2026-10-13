@@ -51,7 +51,7 @@
   function cardHTML(q) {
     var ch = chapterById(q.chapter);
     var src = q.source ? escapeHTML(q.source) : "Source inconnue";
-    var del = q.custom ? '<button class="quote-delete" data-id="' + q.id + '" data-local="' + (q.local ? "1" : "0") + '" title="Supprimer cette citation">✕</button>' : "";
+    var del = q.custom ? '<button class="quote-delete" data-id="' + q.id + '" data-local="' + (q.local ? "1" : "0") + '" title="Supprimer cette citation" aria-label="Supprimer cette citation">✕</button>' : "";
     return '<figure class="quote-card"><span class="quote-mark">«</span>' + del +
       '<blockquote class="quote-text">' + highlight(escapeHTML(q.text), state.query.trim()) + "</blockquote>" +
       '<figcaption class="quote-source"><span>' + src + "</span>" +
@@ -80,10 +80,25 @@
     var nav = document.getElementById("chapters");
     var html = '<button class="chip' + (state.chapter === "all" ? " active" : "") + '" data-ch="all">Toutes <span class="count">' + quotes.length + "</span></button>";
     CHAPTERS.forEach(function (c) {
-      html += '<button class="chip' + (state.chapter === c.id ? " active" : "") + '" data-ch="' + c.id + '">' + c.emoji + " " + c.label +
+      html += '<button class="chip' + (state.chapter === c.id ? " active" : "") + '" data-ch="' + c.id + '">' + c.label +
         ' <span class="count">' + (counts[c.id] || 0) + "</span></button>";
     });
     nav.innerHTML = html;
+    renderHeroStats(quotes);
+  }
+
+  function renderHeroStats(quotes) {
+    var el = document.getElementById("heroStats");
+    if (!el) return;
+    var works = {};
+    quotes.forEach(function (q) {
+      var w = (q.source || "").split(",")[0].trim();
+      if (w) works[w] = true;
+    });
+    el.innerHTML =
+      '<div class="hero-stat"><span class="hero-stat-num">' + quotes.length + '</span><span class="hero-stat-label">citations</span></div>' +
+      '<div class="hero-stat"><span class="hero-stat-num">' + CHAPTERS.length + '</span><span class="hero-stat-label">chapitres</span></div>' +
+      '<div class="hero-stat"><span class="hero-stat-num">' + Object.keys(works).length + '</span><span class="hero-stat-label">œuvres</span></div>';
   }
 
   function bindChips() {
@@ -118,7 +133,7 @@
   function fillChapterSelect() {
     var sel = document.getElementById("newChapter");
     sel.innerHTML = CHAPTERS.map(function (c) {
-      return '<option value="' + c.id + '">' + c.emoji + " " + c.label + "</option>";
+      return '<option value="' + c.id + '">' + c.label + "</option>";
     }).join("");
   }
 
