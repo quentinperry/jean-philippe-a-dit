@@ -51,7 +51,7 @@
   function cardHTML(q) {
     var ch = chapterById(q.chapter);
     var src = q.source ? escapeHTML(q.source) : "Source inconnue";
-    var del = q.custom ? '<button class="quote-delete" data-id="' + q.id + '" data-local="' + (q.local ? "1" : "0") + '" title="Supprimer cette citation">✕</button>' : "";
+    var del = q.custom ? '<button class="quote-delete" data-id="' + q.id + '" data-local="' + (q.local ? "1" : "0") + '" title="Supprimer cette citation" aria-label="Supprimer cette citation">✕</button>' : "";
     return '<figure class="quote-card"><span class="quote-mark">«</span>' + del +
       '<blockquote class="quote-text">' + highlight(escapeHTML(q.text), state.query.trim()) + "</blockquote>" +
       '<figcaption class="quote-source"><span>' + src + "</span>" +
@@ -80,10 +80,25 @@
     var nav = document.getElementById("chapters");
     var html = '<button class="chip' + (state.chapter === "all" ? " active" : "") + '" data-ch="all">Toutes <span class="count">' + quotes.length + "</span></button>";
     CHAPTERS.forEach(function (c) {
-      html += '<button class="chip' + (state.chapter === c.id ? " active" : "") + '" data-ch="' + c.id + '">' + c.emoji + " " + c.label +
+      html += '<button class="chip' + (state.chapter === c.id ? " active" : "") + '" data-ch="' + c.id + '">' + c.label +
         ' <span class="count">' + (counts[c.id] || 0) + "</span></button>";
     });
     nav.innerHTML = html;
+    renderHeroStats(quotes);
+  }
+
+  function renderHeroStats(quotes) {
+    var el = document.getElementById("heroStats");
+    if (!el) return;
+    var works = {};
+    quotes.forEach(function (q) {
+      var w = (q.source || "").split(",")[0].trim();
+      if (w) works[w] = true;
+    });
+    el.innerHTML =
+      '<div class="hero-stat"><span class="hero-stat-num">' + quotes.length + '</span><span class="hero-stat-label">citations</span></div>' +
+      '<div class="hero-stat"><span class="hero-stat-num">' + CHAPTERS.length + '</span><span class="hero-stat-label">chapitres</span></div>' +
+      '<div class="hero-stat"><span class="hero-stat-num">' + Object.keys(works).length + '</span><span class="hero-stat-label">œuvres</span></div>';
   }
 
   function bindChips() {
@@ -118,7 +133,7 @@
   function fillChapterSelect() {
     var sel = document.getElementById("newChapter");
     sel.innerHTML = CHAPTERS.map(function (c) {
-      return '<option value="' + c.id + '">' + c.emoji + " " + c.label + "</option>";
+      return '<option value="' + c.id + '">' + c.label + "</option>";
     }).join("");
   }
 
@@ -210,78 +225,4 @@
   bindChips();
   render();
   fetchRemote().then(function () { renderChips(); render(); });
-
-  // Quiz « Jean-Philippe a-t-il dit ça ? »
-  var quizData = window.QUIZ_DATA || [];
-  var quizGame = document.getElementById("quizGame");
-  var quizNext = document.getElementById("quizNext");
-  var quizScoreBox = document.getElementById("quizScore");
-  var quizScoreValue = document.getElementById("quizScoreValue");
-  var quizPlayedValue = document.getElementById("quizPlayedValue");
-  var score = 0;
-  var played = 0;
-
-  function shuffle(arr) {
-    var a = arr.slice();
-    for (var i = a.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
-    }
-    return a;
-  }
-
-  var deck = [];
-
-  function nextQuizItem() {
-    if (!quizData.length) return null;
-    if (!deck.length) {
-      deck = shuffle(quizData);
-    }
-    return deck.pop();
-  }
-
-  function renderQuiz() {
-    var item = nextQuizItem();
-    if (!item) return;
-    var options = shuffle([{ text: item.real, real: true }].concat(
-      item.fakes.map(function (f) { return { text: f, real: false }; })
-    ));
-    var answered = false;
-
-    var list = document.createElement("div");
-    list.className = "quiz-options";
-    options.forEach(function (opt) {
-      var btn = document.createElement("button");
-      btn.className = "quiz-option";
-      btn.textContent = opt.text;
-      btn.addEventListener("click", function () {
-        if (answered) return;
-        answered = true;
-        played++;
-        if (opt.real) {
-          score++;
-          btn.classList.add("correct");
-        } else {
-          btn.classList.add("wrong");
-          list.querySelectorAll(".quiz-option").forEach(function (b) {
-            if (b.textContent === item.real) b.classList.add("correct");
-          });
-        }
-        quizScoreBox.classList.remove("hidden");
-        quizScoreValue.textContent = score;
-        quizPlayedValue.textContent = played;
-        quizNext.classList.remove("hidden");
-      });
-      list.appendChild(btn);
-    });
-
-    quizGame.replaceChildren(list);
-  }
-
-  quizNext.addEventListener("click", function () {
-    quizNext.classList.add("hidden");
-    renderQuiz();
-  });
-
-  renderQuiz();
 })();

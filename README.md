@@ -8,13 +8,17 @@ Site de recueil des citations de **Jean-Philippe Sarcos**, chef de chœur – pe
 - Recherche plein texte (citation, œuvre, année) avec surlignage
 - Filtres par chapitre
 - Bouton « Citation au hasard »
+- Quiz sur une page dédiée (`quiz.html`) : une citation authentique, trois impostures
 - Ajout de citations depuis le site (catégorie, œuvre, année) : mutualisées via le backend, ou en repli sauvegardées dans le navigateur (localStorage) ; supprimables d'un clic
 
 ## Structure
 
-- `index.html` – page principale
+- `index.html` – page principale (citations)
+- `quiz.html` – page du quiz « Jean-Philippe a-t-il dit ça ? »
 - `data.js` – les citations (chapitre, texte, source)
 - `app.js` – logique de recherche, filtres et affichage
+- `quiz.js` – données du quiz (chargées sur `quiz.html`)
+- `quiz-page.js` – logique du quiz
 - `style.css` – styles
 - `server.js` – serveur HTTP sans dépendance (API REST + fichiers statiques), stockage dans `quotes.json`
 
