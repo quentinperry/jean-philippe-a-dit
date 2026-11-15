@@ -1,12 +1,12 @@
 // Citations de Jean-Philippe Sarcos, recueillies par plusieurs générations d'académiciens.
 const CHAPTERS = [
-  { id: "hommages", label: "Hommages à des personnages publics", emoji: "👑" },
-  { id: "animaux", label: "Références animalières", emoji: "🦎" },
-  { id: "vie", label: "Réflexions sur la vie et la société", emoji: "🌍" },
-  { id: "voix", label: "Consignes vocales", emoji: "🎵" },
-  { id: "menaces", label: "Menaces et violences", emoji: "⚠️" },
-  { id: "doux", label: "Mots doux", emoji: "❤️" },
-  { id: "conseils", label: "Conseils de vie", emoji: "💡" }
+  { id: "hommages", short: "Hommages", label: "Hommages à des personnages publics", emoji: "👑" },
+  { id: "animaux", short: "Bestiaire", label: "Références animalières", emoji: "🦎" },
+  { id: "vie", short: "La vie", label: "Réflexions sur la vie et la société", emoji: "🌍" },
+  { id: "voix", short: "Consignes vocales", label: "Consignes vocales", emoji: "🎵" },
+  { id: "menaces", short: "Menaces", label: "Menaces et violences", emoji: "⚠️" },
+  { id: "doux", short: "Mots doux", label: "Mots doux", emoji: "❤️" },
+  { id: "conseils", short: "Conseils", label: "Conseils de vie", emoji: "💡" }
 ];
 
 const QUOTES = [

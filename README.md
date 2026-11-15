@@ -9,6 +9,8 @@ Site de recueil des citations de **Jean-Philippe Sarcos**, chef de chœur – pe
 - Filtres par chapitre
 - Bouton « Citation au hasard »
 - Quiz sur une page dédiée (`quiz.html`) : une citation authentique, trois impostures
+- Partage d'une citation (partage natif sur mobile, copie sinon)
+- Interface pensée mobile : barre d'onglets en bas d'écran, chapitres défilants, fenêtres en tiroir, thème clair/sombre
 - Ajout de citations depuis le site (catégorie, œuvre, année) : mutualisées via le backend, ou en repli sauvegardées dans le navigateur (localStorage) ; supprimables d'un clic
 
 ## Structure
@@ -19,7 +21,7 @@ Site de recueil des citations de **Jean-Philippe Sarcos**, chef de chœur – pe
 - `app.js` – logique de recherche, filtres et affichage
 - `quiz.js` – données du quiz (chargées sur `quiz.html`)
 - `quiz-page.js` – logique du quiz
-- `style.css` – styles
+- `style.css` – styles (identité « Partition annotée » : Instrument Serif + Instrument Sans, papier ivoire, encre bleu nuit, crayon rouge)
 - `server.js` – serveur HTTP sans dépendance (API REST + fichiers statiques), stockage dans `quotes.json`
 
 ## Backend (citations mutualisées)
