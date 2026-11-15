@@ -2,37 +2,55 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Le quiz – Jean-Philippe a-t-il dit ça ?</title>
 <meta name="description" content="Une citation est authentique, trois sont des impostures. Saurez-vous démasquer les impostures du chef de chœur Jean-Philippe Sarcos ?">
+<meta name="theme-color" content="#f6f1e7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#10141d" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23d9452b'/%3E%3Ctext x='32' y='47' font-family='Georgia,serif' font-size='40' font-style='italic' text-anchor='middle' fill='%23fff'%3E%C2%AB%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script>try{var t=localStorage.getItem("jp-theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
 </head>
 <body class="quiz-page">
 <a class="skip-link" href="#quizGame">Aller au quiz</a>
 
-<header class="quiz-hero">
-  <div class="quiz-hero-inner">
-    <a class="back-link" href="index.html">
-      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M14.7 5.3a1 1 0 0 1 0 1.4L9.4 12l5.3 5.3a1 1 0 0 1-1.4 1.4l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 0 1 1.4 0Z"/></svg>
-      Toutes les citations
-    </a>
-    <h1 class="quiz-hero-title">Jean-Philippe a-t-il dit ça&nbsp;?</h1>
-    <p class="quiz-hero-sub">Une citation est authentique. Trois sont des impostures.<br>Saurez-vous les démasquer&nbsp;?</p>
-  </div>
+<header class="topbar">
+  <a class="back-link" href="index.html">
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></svg>
+    <span>Citations</span>
+  </a>
+  <p id="quizScore" class="quiz-score" aria-live="polite">
+    <span class="quiz-score-label">Score</span>
+    <span><strong id="quizScoreValue">0</strong>/<span id="quizPlayedValue">0</span></span>
+  </p>
+  <button class="icon-btn js-theme" type="button" aria-label="Changer de thème">
+    <svg class="i-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    <svg class="i-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></svg>
+  </button>
 </header>
 
 <main class="quiz-wrap">
+  <div class="quiz-intro">
+    <p class="kicker">Le jeu</p>
+    <h1 class="quiz-title">Jean-Philippe a-t-il dit&nbsp;<span class="hero-title-accent">ça&nbsp;?<svg class="pencil" viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9c40-6 90-7 135-4 20 1.5 40 2 59 .5" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg></span></h1>
+    <p class="quiz-sub">Une seule de ces phrases est authentique. Touchez-la.</p>
+  </div>
+
   <section class="quiz" aria-label="Quiz">
-    <div class="quiz-head">
-      <p id="quizScore" class="quiz-score hidden">Score&nbsp;: <span id="quizScoreValue">0</span> / <span id="quizPlayedValue">0</span></p>
-    </div>
     <div id="quizGame" aria-live="polite"></div>
-    <button id="quizNext" class="btn btn-primary hidden">Question suivante</button>
+    <p id="quizFeedback" class="quiz-feedback hidden" role="status"></p>
   </section>
 </main>
+
+<div class="quiz-next-bar">
+  <button id="quizNext" class="btn btn-primary btn-lg" type="button" disabled>
+    Question suivante
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+  </button>
+</div>
 
 <script src="quiz.js"></script>
 <script src="quiz-page.js"></script>
