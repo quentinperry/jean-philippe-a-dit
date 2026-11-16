@@ -24,7 +24,17 @@ Site de recueil des citations de **Jean-Philippe Sarcos**, chef de chœur – pe
 - `style.css` – styles (identité « Partition annotée » : Instrument Serif + Instrument Sans, papier ivoire, encre bleu nuit, crayon rouge)
 - `server.js` – serveur HTTP sans dépendance (API REST + fichiers statiques), stockage dans `quotes.json`
 
-## Backend (citations mutualisées)
+## Recueil partagé (Supabase)
+
+Les citations ajoutées depuis le site sont enregistrées dans Supabase et visibles par tous les visiteurs, y compris sur GitHub Pages. Elles ne dépendent pas du déploiement du site.
+
+- `config.js` – adresse du projet et clé **publique** Supabase (jamais la clé secrète)
+- `store.js` – lecture, ajout et suppression des citations (Supabase → serveur Node → stockage local)
+- `supabase/schema.sql` – table `quotes`, règles d'accès et fonction `delete_quote`, à exécuter une fois dans le SQL Editor
+
+Règles : tout le monde peut lire et ajouter ; seul l'appareil qui a ajouté une citation peut la supprimer (jeton gardé dans le navigateur) ; l'administrateur peut tout supprimer depuis le tableau de bord Supabase (Table Editor → `quotes`). Si Supabase est injoignable, la citation est gardée sur l'appareil puis envoyée automatiquement à la visite suivante.
+
+## Backend Node (alternative locale)
 
 Lancez le serveur Node.js (aucune dépendance) :
 
