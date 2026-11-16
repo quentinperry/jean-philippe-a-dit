@@ -1,39 +1,16 @@
 (function () {
   var state = { query: "", chapter: "all" };
-  var CUSTOM_KEY = "jp-adit-custom-quotes";
-  var remoteQuotes = [];
-  var apiAvailable = false;
+  var store = window.QuoteStore;
   var currentSpotlight = null;
 
   function $(id) { return document.getElementById(id); }
-
-  function loadCustom() {
-    try { return JSON.parse(localStorage.getItem(CUSTOM_KEY)) || []; }
-    catch (e) { return []; }
-  }
-
-  function saveCustom(list) {
-    try { localStorage.setItem(CUSTOM_KEY, JSON.stringify(list)); } catch (e) {}
-  }
 
   function escapeHTML(s) {
     return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   }
 
-  function localList() {
-    return loadCustom().map(function (c) {
-      return { chapter: c.chapter, text: c.text, source: c.source, custom: true, id: c.id, local: true };
-    });
-  }
-
-  function remoteList() {
-    return remoteQuotes.map(function (c) {
-      return { chapter: c.chapter, text: c.text, source: c.source, custom: true, id: c.id };
-    });
-  }
-
   function allQuotes() {
-    return QUOTES.concat(remoteList(), localList());
+    return QUOTES.concat(store.list());
   }
 
   function normalize(s) {
@@ -62,7 +39,7 @@
     var ch = chapterById(q.chapter);
     var src = q.source ? escapeHTML(q.source) : "Source inconnue";
     var query = opts.noHighlight ? "" : state.query.trim();
-    var del = q.custom && !opts.noActions
+    var del = q.canDelete && !opts.noActions
       ? '<button class="card-btn card-btn-danger quote-delete" type="button" data-id="' + escapeHTML(q.id) + '" data-local="' + (q.local ? "1" : "0") + '" aria-label="Supprimer cette citation">' + ICON_TRASH + "</button>"
       : "";
     var share = opts.noActions ? "" :
@@ -226,29 +203,24 @@
     }).join("");
   }
 
-  function buildSource(work, year) {
-    var parts = [];
-    if (work) parts.push(work.trim());
-    if (year) parts.push(year.trim());
-    return parts.join(", ");
-  }
-
-  function fetchRemote() {
-    return fetch("/api/quotes").then(function (r) {
-      if (!r.ok) throw new Error("api");
-      return r.json();
-    }).then(function (list) {
-      remoteQuotes = Array.isArray(list) ? list : [];
-      apiAvailable = true;
-    }).catch(function () {
-      apiAvailable = false;
-    });
+  function updateAddNote() {
+    var note = $("addNote");
+    if (store.shared()) {
+      note.textContent = "Elle sera visible par tous les visiteurs du site.";
+      note.className = "form-note is-shared";
+    } else {
+      note.textContent = store.unreachable
+        ? "Le recueil partagé est injoignable : la citation sera gardée sur cet appareil et envoyée plus tard."
+        : "La citation sera enregistrée uniquement sur cet appareil.";
+      note.className = "form-note is-local";
+    }
   }
 
   document.querySelectorAll(".js-add").forEach(function (b) {
     b.addEventListener("click", function () {
       $("addError").classList.add("hidden");
       if (state.chapter !== "all") $("newChapter").value = state.chapter;
+      updateAddNote();
       openSheet($("addForm"));
       $("newText").focus();
     });
@@ -267,33 +239,21 @@
       $("newText").focus();
       return;
     }
-    var done = function () {
+    var submit = $("addSubmit");
+    submit.disabled = true;
+    var shared = store.shared();
+    store.add({ chapter: chapter, text: text, work: work, year: year }).then(function () {
       $("newText").value = "";
       $("newWork").value = "";
       $("newYear").value = "";
       closeSheet($("addForm"));
       renderChips();
       render();
-      toast("Citation ajoutée au recueil");
-    };
-    if (apiAvailable) {
-      fetch("/api/quotes", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ chapter: chapter, text: text, work: work, year: year })
-      }).then(function (r) {
-        if (!r.ok) return r.json().then(function (b) { throw new Error(b.error || "Erreur serveur"); });
-        return fetchRemote();
-      }).then(done).catch(function (e) {
-        err.textContent = e.message;
-        err.classList.remove("hidden");
-      });
-    } else {
-      var list = loadCustom();
-      list.push({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 7), chapter: chapter, text: text, source: buildSource(work, year) });
-      saveCustom(list);
-      done();
-    }
+      toast(shared ? "Citation ajoutée au recueil partagé" : "Citation enregistrée sur cet appareil");
+    }).catch(function (e) {
+      err.textContent = e.message || "L'ajout a échoué.";
+      err.classList.remove("hidden");
+    }).then(function () { submit.disabled = false; });
   });
 
   // ── Card actions ───────────────────────────────────────────────
@@ -304,20 +264,20 @@
     var btn = e.target.closest(".quote-delete");
     if (!btn) return;
     if (!confirm("Supprimer cette citation du recueil ?")) return;
-    var finish = function () { renderChips(); render(); toast("Citation supprimée"); };
-    if (btn.dataset.local === "1" || !apiAvailable) {
-      saveCustom(loadCustom().filter(function (c) { return c.id !== btn.dataset.id; }));
-      finish();
-    } else {
-      fetch("/api/quotes/" + encodeURIComponent(btn.dataset.id), { method: "DELETE" })
-        .then(fetchRemote)
-        .then(finish)
-        .catch(function () { toast("Suppression impossible"); });
-    }
+    btn.disabled = true;
+    store.remove(btn.dataset.id, btn.dataset.local === "1").then(function () {
+      renderChips(); render(); toast("Citation supprimée");
+    }).catch(function (e) {
+      btn.disabled = false;
+      toast(e.message || "Suppression impossible");
+    });
   });
 
   fillChapterSelect();
   renderChips();
   render();
-  fetchRemote().then(function () { renderChips(); render(); });
+  store.load().then(function () {
+    renderChips(); render();
+    if (store.migrated) toast(store.migrated + " citation" + (store.migrated > 1 ? "s envoyées" : " envoyée") + " au recueil partagé");
+  });
 })();

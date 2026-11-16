@@ -568,6 +568,16 @@ a { color: inherit; }
 }
 .field-row { display: flex; gap: 12px; }
 .field-year { flex: 0 0 96px; }
+.form-note {
+  display: flex; align-items: center; gap: 8px;
+  margin: 2px 0 12px;
+  font-size: 0.85rem; color: var(--ink-mute);
+}
+.form-note::before {
+  content: ""; flex-shrink: 0; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--ink-mute);
+}
+.form-note.is-shared::before { background: var(--ok); }
 .form-error {
   padding: 10px 14px; border-radius: var(--radius-sm);
   background: var(--bad-soft); color: var(--bad);
